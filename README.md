@@ -15,6 +15,7 @@ For S3 to undergo this, you simply have to do the following,
 - Click Save changes.
 - Now come down where you see another Edit under 'Bucket policy' section.
 ![S3 specs 2](https://user-images.githubusercontent.com/98028588/169342374-602dcea0-4782-4527-a439-a7cac1b7ca0e.PNG)
+- Go back to 1st Step and check the 'Block all public access' box.
 
 - Click Edit and inside the policy box where you see some lines of code. Try editing or replacing the code with the below code,
 ```{
@@ -32,7 +33,7 @@ For S3 to undergo this, you simply have to do the following,
 ```
 - You're done here. DynamoDB doesn't require all this, it goes fine with basic implementation.
 
-## Lambda
+### Lambda
 - You can see three files here.
    - dynamodbget.js (Node.js 16.x)
    - dynamodbput.js (Node.js 16.x)
@@ -42,6 +43,20 @@ For S3 to undergo this, you simply have to do the following,
 - Choose Architecture as arm64 while creating.
 ![archi](https://user-images.githubusercontent.com/98028588/169345508-a96c0741-d39f-406c-9c53-f968f127ac86.PNG)
 - Give basic S3 and Dynamodb permissions.
+
+### API Gateway
+- Create two functions in API Gateway(1 for dynamodb and 1 for S3).
+- Create Resource for those two functions.
+- Create two methods for dynamodb (get and put) whereas one method for S3 is enough.
+- Link the lambda functions respectively.(*While calling the URL's in your dart file adding the  *)
+
+
+## Run
+Check the api links with postman if it is working or not.
+- The functions in apicalls.dart is standard. 
+- You can place this file in your project and use them in your code. 
+- All you need to do is put the API links accordingly in each function.
+
 
 
 
